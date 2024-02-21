@@ -2,16 +2,16 @@ group 'com.telematicssdk'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.4.31'
-    ext.raxel_tracking = '2.2.253'
+    ext.kotlin_version = '1.9.22'
+    ext.raxel_tracking = '2.2.260'
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 
     dependencies {
         //noinspection GradleDependency
-        classpath 'com.android.tools.build:gradle:3.5.0'
+        classpath 'com.android.tools.build:gradle:7.4.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -19,7 +19,7 @@ buildscript {
 rootProject.allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
         maven {
             url "https://s3.us-east-2.amazonaws.com/android.telematics.sdk.production/"
         }
@@ -30,13 +30,14 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 34
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
     defaultConfig {
-        minSdkVersion 18
+        minSdkVersion 24
+        targetSdkVersion 34
 //        javaCompileOptions.annotationProcessorOptions.includeCompileClasspath = true
     }
     lintOptions {
