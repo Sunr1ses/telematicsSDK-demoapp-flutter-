@@ -2,12 +2,17 @@ package com.telematicssdk
 
 import android.util.Log
 import androidx.annotation.CallSuper
+import androidx.work.Configuration
 import com.raxeltelematics.v2.sdk.Settings
 import com.raxeltelematics.v2.sdk.TrackingApi
 import io.flutter.app.FlutterApplication
 
-open class TelematicsSDKApp : FlutterApplication() {
-
+open class TelematicsSDKApp : FlutterApplication(), Configuration.Provider {
+    override val workManagerConfiguration: Configuration = Configuration.Builder()
+        .setMinimumLoggingLevel(Log.VERBOSE)
+        // ... do your configuration customization
+        .build()
+        
     @CallSuper
     override fun onCreate() {
         super.onCreate()
